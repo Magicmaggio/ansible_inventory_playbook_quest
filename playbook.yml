@@ -1,0 +1,41 @@
+---
+- name: Installer Nginx sur les serveurs web
+  hosts: web_servers
+  become: true
+  tasks:
+    - name: Installer Nginx
+      apt:
+        name: nginx
+        state: present
+        update_cache: yes
+
+    - name: Démarrer et activer Nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
+
+- name: Installer MariaDB sur les serveurs de base de données
+  hosts: db_servers
+  become: true
+  tasks:
+    - name: Installer MariaDB
+      apt:
+        name: mariadb-server
+        state: present
+        update_cache: yes
+
+    - name: Démarrer et activer MariaDB
+      systemd:
+        name: mariadb
+        state: started
+        enabled: yes
+
+
+#################################################################################################
+#Explications :
+#
+#    Première partie : Installation et démarrage de Nginx sur les serveurs du groupe web_servers.
+#    Deuxième partie : Installation et démarrage de MariaDB sur les serveurs du groupe db_servers.
+#    become: true : Exécution des tâches avec les droits administrateurs (sudo).
+#################################################################################################
