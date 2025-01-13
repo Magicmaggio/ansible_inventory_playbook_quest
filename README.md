@@ -7,11 +7,11 @@ Ce projet Ansible automatise l'installation de :
 
 ### Structure
 - `inventory.yml` : Inventaire des serveurs (web et base de données)  
-- `site.yml` : Playbook pour installer et configurer Nginx et MariaDB
+- `playbook.yml` : Playbook pour installer et configurer Nginx et MariaDB
 
 ### Commande d'exécution
 ```bash
-ansible-playbook -i inventory.yml site.yml
+ansible-playbook -i inventory.yml playbook.yml
 ```
 
 ## Prérequis
